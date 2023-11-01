@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :proponents
   get 'proponent/inss_discount', to: 'proponents#inss_discount'
 
