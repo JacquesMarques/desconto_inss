@@ -1,0 +1,71 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: .
+    image: rails-docker
+    command: bin/rails s -p 3000 -b 0.0.0.0
+    volumes:
+      - .:/app
+      - rails-docker_bundle:/usr/local/bundle
+    ports:
+      - 3000:3000
+    networks:
+      - rails-docker_network
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+      - redis
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+      - DATABASE_HOST=db
+
+  db:
+    image: postgres:13.2-alpine
+    container_name: rails-docker_db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - rails-docker_network
+
+  redis:
+    image: redis:6.0.12-alpine
+    container_name: rails-docker_redis
+    command: redis-server
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    logging:
+      driver: none
+    networks:
+      - rails-docker_network
+
+  sidekiq:
+    image: rails-docker
+    container_name: rails-docker_sidekiq
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    command: bundle exec sidekiq
+    networks:
+      - rails-docker_network
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+
+volumes:
+  pg_data:
+  redis_data:
+  rails-docker_bundle:
+
+networks:
+  rails-docker_network:
