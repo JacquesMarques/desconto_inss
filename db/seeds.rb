@@ -11,3 +11,4 @@ FactoryBot.create_list(:proponent, 10) do |record|
   record.save!
 end
 
+User.create!(email: 'admin@email.com', password: '123456', password_confirmation: '123456')
