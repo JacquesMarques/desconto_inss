@@ -40,7 +40,7 @@
   <div class="row mb-3">
     <div class="col-lg-6">
       <%= form.label :salary, class: 'form-label' %>
-      <%= form.number_field :salary, step: :any, class: 'form-control' %>
+      <%= form.number_field :salary, step: :any, class: 'form-control', onblur: 'calcInssDiscount(this);' %>
     </div>
     <div class="col-lg-6">
       <%= form.label :inss_discount, class: 'form-label' %>
