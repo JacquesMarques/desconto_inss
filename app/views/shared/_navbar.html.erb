@@ -16,7 +16,7 @@
       <ul class="navbar-nav ms-auto flex-nowrap">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuário
+            <%= @current_user.email %>
           </a>
           <ul class="dropdown-menu">
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
