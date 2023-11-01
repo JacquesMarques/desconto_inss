@@ -1,57 +1,58 @@
-<%= form_for(proponent) do |f| %>
+<%= form_for(proponent) do |form| %>
   <% if proponent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(proponent.errors.count, "error") %> prohibited this proponent from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h2><%= pluralize(proponent.errors.count, "error") %> <%= I18n.t 'views.prohibited_saved' %></h2>
       <ul>
-      <% proponent.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% proponent.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :document %>
-    <%= f.text_field :document %>
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :document, class: 'form-label' %>
+      <%= form.text_field :document, class: 'form-control' %>
+    </div>
+    <div class="col-lg-6">
+      <%= form.label :birthday, class: 'form-label' %>
+      <%= form.date_field :birthday, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :birthday %>
-    <%= f.text_field :birthday %>
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :personal_phone, class: 'form-label' %>
+      <%= form.text_field :personal_phone, class: 'form-control' %>
+    </div>
+    <div class="col-lg-6">
+      <%= form.label :references_phone, class: 'form-label' %>
+      <%= form.text_field :references_phone, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :address_id %>
-    <%= f.text_field :address_id %>
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :salary, class: 'form-label' %>
+      <%= form.number_field :salary, step: :any, class: 'form-control' %>
+    </div>
+    <div class="col-lg-6">
+      <%= form.label :inss_discount, class: 'form-label' %>
+      <%= form.text_field :inss_discount, readonly: true, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :personal_phone %>
-    <%= f.text_field :personal_phone %>
-  </div>
+  <%= form.fields_for :address do |fe| %>
+    <%= render 'proponents/address_fields', f: fe %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :references_phone %>
-    <%= f.text_field :references_phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :salary %>
-    <%= f.text_field :salary %>
-  </div>
-
-  <div class="field">
-    <%= f.label :inss_discount %>
-    <%= f.text_field :inss_discount %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
 <% end %>

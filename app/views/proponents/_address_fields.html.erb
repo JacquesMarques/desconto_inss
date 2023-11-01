@@ -1,0 +1,32 @@
+<div class="row mb-3">
+  <div class="col-lg-6">
+    <%= f.label :street, I18n.t('activerecord.attributes.address.street'), class: 'form-label' %>
+    <%= f.text_field :street, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :number, I18n.t('activerecord.attributes.address.number'), class: 'form-label' %>
+    <%= f.text_field :number, class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-lg-6">
+    <%= f.label :neighborhood, I18n.t('activerecord.attributes.address.neighborhood'), class: 'form-label' %>
+    <%= f.text_field :neighborhood, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :city, I18n.t('activerecord.attributes.address.city'), class: 'form-label' %>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-lg-6">
+    <%= f.label :state, I18n.t('activerecord.attributes.address.state'), class: 'form-label' %>
+    <%= f.text_field :state, class: 'form-control' %>
+  </div>
+  <div class="col-lg-6">
+    <%= f.label :zipcode, I18n.t('activerecord.attributes.address.zipcode'), class: 'form-label' %>
+    <%= f.text_field :zipcode, class: 'form-control' %>
+  </div>
+</div>

@@ -1,6 +1,12 @@
-<h1>Editing Proponent</h1>
+<div class="container-fluid pt-4">
+  <h4><%= I18n.t 'views.edit_proponent' %></h4>
 
-<%= render 'form', proponent: @proponent %>
+  <%= render "form", proponent: @proponent %>
 
-<%= link_to 'Show', @proponent %> |
-<%= link_to 'Back', proponents_path %>
+  <br>
+
+  <div>
+    <%= link_to I18n.t('views.show_proponent'), @proponent, class: 'btn btn-info' %> |
+    <%= link_to I18n.t('views.back_proponents'), proponents_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

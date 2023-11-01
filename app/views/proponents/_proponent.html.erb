@@ -1,0 +1,16 @@
+<tr>
+  <td><%= proponent.name %></td>
+  <td><%= proponent.document %></td>
+  <td><%= proponent.birthday.to_time.strftime("%d/%m/%Y") %></td>
+  <td><%= proponent.personal_phone %></td>
+  <td><%= proponent.references_phone %></td>
+  <td class="text-end"><%= number_to_currency(proponent.salary, unit: "R$", separator: ",", delimiter: ".") %></td>
+  <td class="text-end"><%= number_to_currency(proponent.inss_discount, unit: "R$", separator: ",", delimiter: ".") %></td>
+  <td class="text-center">
+   <%= link_to I18n.t('views.view'), proponent,  class: 'btn btn-info btn-sm' %>
+   <%= link_to I18n.t('views.edit'), edit_proponent_path(proponent), data: { controller: "modal" }, class: 'btn btn-primary btn-sm' %>
+   <%= link_to I18n.t('views.delete'), proponent, method: :delete,
+                data: { confirm: I18n.t('views.delete_confirmation') },
+                class: 'btn btn-danger btn-sm' %>
+  </td>
+</tr>

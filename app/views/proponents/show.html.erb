@@ -1,44 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid pt-4">
+  <% if notice.present? %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @proponent.name %>
-</p>
+  <%= render 'proponents/proponent_detail', proponent: @proponent %>
 
-<p>
-  <strong>Document:</strong>
-  <%= @proponent.document %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @proponent.birthday %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @proponent.address %>
-</p>
-
-<p>
-  <strong>Personal phone:</strong>
-  <%= @proponent.personal_phone %>
-</p>
-
-<p>
-  <strong>References phone:</strong>
-  <%= @proponent.references_phone %>
-</p>
-
-<p>
-  <strong>Salary:</strong>
-  <%= @proponent.salary %>
-</p>
-
-<p>
-  <strong>Inss discount:</strong>
-  <%= @proponent.inss_discount %>
-</p>
-
-<%= link_to 'Edit', edit_proponent_path(@proponent) %> |
-<%= link_to 'Back', proponents_path %>
+  <div>
+    <div  class="mb-3">
+      <%= link_to I18n.t('views.edit_proponent'), edit_proponent_path(@proponent), class: 'btn btn-primary' %> |
+      <%= link_to I18n.t('views.back_proponents'), proponents_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
