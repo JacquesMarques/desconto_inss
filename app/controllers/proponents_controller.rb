@@ -58,6 +58,13 @@ class ProponentsController < ApplicationController
     end
   end
 
+  def inss_discount
+    inss_discount = InssDiscountService.new(params[:salary]).calculate
+    respond_to do |format|
+      format.json { render json: { discount: inss_discount } }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

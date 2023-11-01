@@ -1,0 +1,17 @@
+faixa_1:
+  salario_inicial: 0
+  salario_final: 1045.00
+  aliquota: 7.5
+faixa_2:
+  salario_inicial: 1045.01
+  salario_final: 2089.60
+  aliquota: 9
+faixa_3:
+  salario_inicial: 2089.61
+  salario_final: 3134.40
+  aliquota: 12
+faixa_4:
+  salario_inicial: 3134.41
+  salario_final: 6101.06
+  aliquota: 12
+
