@@ -2,6 +2,7 @@
 
 class HomeController < ApplicationController
   def index
+    @rows = QuantityByRangeService.new.ranges
   end
 
   def calcule_inss_discount

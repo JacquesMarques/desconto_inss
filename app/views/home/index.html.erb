@@ -1,2 +1,34 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<% if notice.present? %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<div class="alert alert-dark text-center" role="alert">
+  Relação de Funcionários por Faixa Salarial
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <table class="table table-striped table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Faixa Salarial</th>
+        <th class="text-center">Quantidade</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @rows.each do |row| %>
+        <tr>
+          <% if row[0] == 0 %>
+            <td><%= "Até #{number_to_currency(row[1], unit: "R$", separator: ",", delimiter: ".")}" %>
+          <% else %>
+            <td><%= "De #{number_to_currency(row[0], unit: "R$", separator: ",", delimiter: ".")} a #{number_to_currency(row[1], unit: "R$", separator: ",", delimiter: ".")}" %>
+          <% end %>
+          <td class="text-center"><%= row[2] %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-6">
+  </div>
+</div>
