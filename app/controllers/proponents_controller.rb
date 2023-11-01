@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProponentsController < ApplicationController
-  before_action :set_proponent, only: %i[ show edit update destroy ]
+  before_action :set_proponent, only: %i[show edit update destroy]
 
   # GET /proponents or /proponents.json
   def index
@@ -7,17 +9,16 @@ class ProponentsController < ApplicationController
   end
 
   # GET /proponents/1 or /proponents/1.json
-  def show
-  end
+  def show; end
 
   # GET /proponents/new
   def new
     @proponent = Proponent.new
+    @proponent.build_address
   end
 
   # GET /proponents/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /proponents or /proponents.json
   def create
@@ -25,7 +26,7 @@ class ProponentsController < ApplicationController
 
     respond_to do |format|
       if @proponent.save
-        format.html { redirect_to proponent_url(@proponent), notice: "Proponent was successfully created." }
+        format.html { redirect_to proponent_url(@proponent), notice: 'Proponente foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @proponent }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class ProponentsController < ApplicationController
   def update
     respond_to do |format|
       if @proponent.update(proponent_params)
-        format.html { redirect_to proponent_url(@proponent), notice: "Proponent was successfully updated." }
+        format.html { redirect_to proponent_url(@proponent), notice: 'Proponente foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @proponent }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +53,22 @@ class ProponentsController < ApplicationController
     @proponent.destroy
 
     respond_to do |format|
-      format.html { redirect_to proponents_url, notice: "Proponent was successfully destroyed." }
+      format.html { redirect_to proponents_url, notice: 'Proponente foi excluído com sucesso.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_proponent
-      @proponent = Proponent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def proponent_params
-      params.require(:proponent).permit(:name, :document, :birthday, :address_id, :personal_phone, :references_phone, :salary, :inss_discount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_proponent
+    @proponent = Proponent.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def proponent_params
+    params.require(:proponent).permit(:name, :document, :birthday, :address_id, :personal_phone,
+                                      :references_phone, :salary, :inss_discount,
+                                      address_attributes: [Address.column_names - %w[created_at updated_at]])
+  end
 end
