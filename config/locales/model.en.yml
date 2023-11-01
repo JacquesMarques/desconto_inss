@@ -1,0 +1,26 @@
+en:
+  activerecord:
+    models:
+      proponent: 'Proponent'
+      address: 'Address'
+      user: 'User'
+    attributes:
+      proponent:
+        name: 'Name'
+        document: 'Document'
+        birthday: 'Birthday'
+        personal_phone: 'Personal Phone'
+        references_phone: 'References Phone'
+        salary: 'Salary'
+        inss_discount: 'INSS Discount'
+      address:
+        title: 'Street'
+        number: 'Number'
+        neighborhood: 'Neighborhood'
+        city: 'City'
+        state: 'State'
+        zipcode: 'Zip Code'
+      user:
+        password: 'Password'
+        password_confirmation: 'Password Confirmation'
+        email: 'Email'

@@ -1,0 +1,10 @@
+pt-BR:
+  views:
+    proponents: 'Proponentes'
+    new_proponent: 'Novo Proponente'
+    edit_proponent: 'Altera Proponente'
+    delete_proponent: 'Apagar Proponente'
+    show_proponent: 'Ver Proponente'
+    back_proponents: 'Volta aos Proponentes'
+    delete_confirmation: 'Tem certeza que quer apagar este item?'
+    prohibited_saved: ' impedem de salvar o registro:'

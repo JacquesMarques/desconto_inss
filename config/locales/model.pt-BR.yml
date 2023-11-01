@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      proponent: 'Proponente'
+      address: 'Endereço'
+      user: 'Usuário'
+    attributes:
+      proponent:
+        name: 'Nome'
+        document: 'CPF'
+        birthday: 'Data Nascimento'
+        personal_phone: 'Telefone Pessoal'
+        references_phone: 'Telefone Referências'
+        salary: 'Salário'
+        inss_discount: 'Desconto INSS'
+      address:
+        street: 'Rua'
+        number: 'Número'
+        neighborhood: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        zipcode: 'CEP'
+      user:
+        password: 'Senha'
+        password_confirmation: 'Senha Confirmação'
+        email: 'Email'
