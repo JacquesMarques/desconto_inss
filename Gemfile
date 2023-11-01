@@ -68,3 +68,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 5.0.1'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
