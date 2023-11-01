@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20231101125511) do
+ActiveRecord::Schema.define(version: 20231101130011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,4 +26,19 @@ ActiveRecord::Schema.define(version: 20231101125511) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "proponents", force: :cascade do |t|
+    t.string   "name",                                      null: false
+    t.string   "document",                                  null: false
+    t.date     "birthday"
+    t.integer  "address_id",                                null: false
+    t.string   "personal_phone"
+    t.string   "references_phone"
+    t.decimal  "salary",           precision: 10, scale: 2, null: false
+    t.decimal  "inss_discount",    precision: 10, scale: 2, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["address_id"], name: "index_proponents_on_address_id", using: :btree
+  end
+
+  add_foreign_key "proponents", "addresses"
 end

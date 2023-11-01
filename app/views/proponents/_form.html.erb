@@ -1,0 +1,57 @@
+<%= form_for(proponent) do |f| %>
+  <% if proponent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proponent.errors.count, "error") %> prohibited this proponent from being saved:</h2>
+
+      <ul>
+      <% proponent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :document %>
+    <%= f.text_field :document %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.text_field :birthday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_id %>
+    <%= f.text_field :address_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personal_phone %>
+    <%= f.text_field :personal_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :references_phone %>
+    <%= f.text_field :references_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :salary %>
+    <%= f.text_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inss_discount %>
+    <%= f.text_field :inss_discount %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
