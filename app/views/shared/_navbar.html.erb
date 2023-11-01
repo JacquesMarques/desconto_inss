@@ -5,13 +5,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= proponents_url %>">Proponentes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= home_calcule_inss_discount_path %>">Calcular Desconto</a>
+        </li>
+      </ul>
       <ul class="navbar-nav ms-auto flex-nowrap">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuário
           </a>
           <ul class="dropdown-menu">
-            <%= link_to "Sair", '#', method: :delete, class: "dropdown-item" %>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </ul>
         </li>
       </ul>
